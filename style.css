@@ -41,6 +41,7 @@ body {
     aspect-ratio: 1 / 1;
     box-shadow: 10px 5px 5px rgb(0 0 0 / 24%);
     background-color: #ffffff;
+    transition: 0.2s;
 }
 
 .control_containers {
@@ -145,6 +146,7 @@ a:hover, a:focus {
 
     .canvas {
         width: 500px;
+        transition: 0.2s;
     }
 
     button {
