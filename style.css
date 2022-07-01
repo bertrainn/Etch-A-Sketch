@@ -12,6 +12,7 @@
 
 html {
     font-size: 1.125rem;
+    font-family: Roboto, "Helvetica Neue";
 }
 
 body {
@@ -25,11 +26,12 @@ body {
     justify-content: flex-end;
     flex-direction: column-reverse;
     gap: 20px;
+    margin: 0 auto;
 }
 
 .title_text {
     text-align: center;
-    font-size: 2rem;
+    font-size: clamp(40px, 5vw, 65px);
     padding: 0.5em 0 0.5em;
 }
 
@@ -52,7 +54,6 @@ body {
 .button_container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
 }
 
 .slider_text {
@@ -60,8 +61,15 @@ body {
     margin-bottom: 5px;
 }
 
+.color_picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
 footer {
-    position: absolute;
     bottom: 0;
     left: 0;
     display: flex;
@@ -73,16 +81,56 @@ footer {
     font-size: 20px;
 }
 
+button {
+    display: inline-block;
+    position: relative;
+    width: 120px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 2px;
+    font-size: 0.9em;
+    background-color: var(--main_white);
+    color: var(--main_back);
+    margin: 20px 10px;
+    transition: 0.2s;
+    transition-delay: 0.2s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border: none;
+}
+
+.active, #reset_btn:active{
+    background-color: var(--main_accent);
+    transition-delay: 0s;
+}
+
+a {
+    color: var(--main_white);
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    padding: .25em 0;
+    color: var(--main_back);
+    background-color: var(--main_accent);
+}
+
 @media (min-width: 768px) {
     .flex-container {
         flex-direction: row;
         justify-content: center;
         gap: 30px
     }
-    .title_text {
-        font-size: 3rem;
-    }
+
     .canvas {
         width: 500px;
+    }
+
+    button {
+        width: 200px;
+        height: 40px;
+    }
+
+    footer {
+        position: absolute;
     }
 }

@@ -8,6 +8,7 @@ function change_Pen_Color(new_Color) {
 
 function change_Mode(new_Mode) {
   current_Mode = new_Mode;
+  active_button(new_Mode);
 }
 
 function change_size(new_Size) {
@@ -28,9 +29,9 @@ let mouseDown = false;
 document.body.onpointerdown = () => (mouseDown = true);
 document.body.onpointerup = () => (mouseDown = false);
 
-pen_input.onclick = () => change_Mode('color');
-eraser_input.onclick = () => change_Mode('eraser');
-random_input.onclick = () => change_Mode('random');
+pen_input.onclick = () => change_Mode("pen_btn");
+eraser_input.onclick = () => change_Mode("eraser_btn");
+random_input.onclick = () => change_Mode("random_btn");
 
 slider_input.onmousemove = (e) => change_Size_Text(e.target.value);
 slider_input.onchange = (e) => change_Canvas_size(e.target.value);
@@ -73,16 +74,24 @@ function clear_Canvas() {
 
 function draw(e) {
   if (e.type === "pointerover" && !mouseDown) return;
-  if (current_Mode === "random") {
+  if (current_Mode === "random_btn") {
     const randomR = Math.floor(Math.random() * 256);
     const randomG = Math.floor(Math.random() * 256);
     const randomB = Math.floor(Math.random() * 256);
     e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-  } else if (current_Mode === "color") {
+  } else if (current_Mode === "pen_btn") {
     e.target.style.backgroundColor = current_Pen_Color;
-  } else if (current_Mode === "eraser") {
+  } else if (current_Mode === "eraser_btn") {
     e.target.style.backgroundColor = "#FFFFFF";
   }
+}
+
+function active_button(new_Mode) {
+  let current_active = document.getElementsByClassName("active")[0];
+  current_active.classList.toggle("active");
+
+  let new_active = document.getElementById(`${new_Mode}`);
+  new_active.classList.toggle("active");
 }
 
 window.onload = () => {
