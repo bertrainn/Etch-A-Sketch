@@ -1,6 +1,6 @@
 let current_Pen_Color = "#000000";
 let current_Size = 16;
-let current_Mode = "color";
+let current_Mode = "pen_btn";
 
 function change_Pen_Color(new_Color) {
   current_Pen_Color = new_Color;
